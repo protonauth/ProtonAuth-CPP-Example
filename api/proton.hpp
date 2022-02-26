@@ -1,8 +1,5 @@
 #pragma once
 
-
-
-
 #ifndef c_auth_i
 #define c_auth_i
 
@@ -48,7 +45,7 @@ namespace proton {
 				);
 			}
 			catch (CryptoPP::Exception& ex) {
-				MessageBoxA(0, ex.what(), "cAuth", MB_ICONERROR);
+				MessageBoxA(0, ex.what(), "ProtonAuth", MB_ICONERROR);
 				exit(0);
 			}
 			return cipher_text;
@@ -70,7 +67,7 @@ namespace proton {
 				);
 			}
 			catch (CryptoPP::Exception& ex) {
-				MessageBoxA(0, p_xor("Invalid API/Encryption key"), "cAuth", MB_ICONERROR);
+				MessageBoxA(0, p_xor("Invalid API/Encryption key"), "ProtonAuth", MB_ICONERROR);
 				exit(0);
 			}
 			return plain_text;
@@ -91,7 +88,7 @@ namespace proton {
 				);
 			}
 			catch (CryptoPP::Exception& ex) {
-				MessageBoxA(0, ex.what(), "cAuth", MB_ICONERROR);
+				MessageBoxA(0, ex.what(), "ProtonAuth", MB_ICONERROR);
 				exit(0);
 			}
 
@@ -110,7 +107,7 @@ namespace proton {
 				);
 			}
 			catch (CryptoPP::Exception& ex) {
-				MessageBoxA(0, ex.what(), "cAuth", MB_ICONERROR);
+				MessageBoxA(0, ex.what(), "ProtonAuth", MB_ICONERROR);
 				exit(0);
 			}
 
@@ -128,7 +125,7 @@ namespace proton {
 					);
 			}
 			catch (CryptoPP::Exception& ex){
-				MessageBoxA(0, ex.what(), "cAuth", MB_ICONERROR);
+				MessageBoxA(0, ex.what(), "ProtonAuth", MB_ICONERROR);
 				exit(0);
 			}
 
@@ -209,9 +206,9 @@ namespace proton {
 		}
 	};
 
-	std::string api_endpoint = p_xor("https://z.bypass.cx/api/handler.php");
+	std::string api_endpoint = p_xor("https://protonauth.xyz/api/handler.php");
 
-	std::string user_agent = p_xor("Mozilla cAuth");
+	std::string user_agent = p_xor("Mozilla ProtonAuth");
 
 	class api {
 	public:
@@ -486,7 +483,7 @@ namespace proton {
 			curl_easy_setopt(c_url, CURLOPT_SSL_VERIFYPEER, 0);
 			curl_easy_setopt(c_url, CURLOPT_SSL_VERIFYHOST, 0);
 
-			curl_easy_setopt(c_url, CURLOPT_PINNEDPUBLICKEY, p_xor("sha256//+12mJ6+w86N13YIbkFiUO/VrdJJk0FhC05RMROytkBQ="));
+			curl_easy_setopt(c_url, CURLOPT_PINNEDPUBLICKEY, p_xor("sha256//vDK72uL1DKstyvrTxOkGz2sXdMsU8IcWSVR8cCWz7I4="));
 
 			curl_easy_setopt(c_url, CURLOPT_POSTFIELDS, post_data.c_str());
 
