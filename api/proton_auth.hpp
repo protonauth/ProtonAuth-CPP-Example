@@ -46,7 +46,7 @@ namespace proton {
 				);
 			}
 			catch (CryptoPP::Exception& ex) {
-				MessageBoxA(0, ex.what(), "cAuth", MB_ICONERROR);
+				MessageBoxA(0, ex.what(), "pAuth", MB_ICONERROR);
 				exit(0);
 			}
 			return cipher_text;
@@ -68,7 +68,7 @@ namespace proton {
 				);
 			}
 			catch (CryptoPP::Exception& ex) {
-				MessageBoxA(0, p_xor("Invalid API/Encryption key"), "cAuth", MB_ICONERROR);
+				MessageBoxA(0, p_xor("Invalid API/Encryption key"), "pAuth", MB_ICONERROR);
 				exit(0);
 			}
 			return plain_text;
@@ -89,7 +89,7 @@ namespace proton {
 				);
 			}
 			catch (CryptoPP::Exception& ex) {
-				MessageBoxA(0, ex.what(), "cAuth", MB_ICONERROR);
+				MessageBoxA(0, ex.what(), "pAuth", MB_ICONERROR);
 				exit(0);
 			}
 
@@ -108,7 +108,7 @@ namespace proton {
 				);
 			}
 			catch (CryptoPP::Exception& ex) {
-				MessageBoxA(0, ex.what(), "cAuth", MB_ICONERROR);
+				MessageBoxA(0, ex.what(), "pAuth", MB_ICONERROR);
 				exit(0);
 			}
 
@@ -126,7 +126,7 @@ namespace proton {
 					);
 			}
 			catch (CryptoPP::Exception& ex){
-				MessageBoxA(0, ex.what(), "cAuth", MB_ICONERROR);
+				MessageBoxA(0, ex.what(), "pAuth", MB_ICONERROR);
 				exit(0);
 			}
 
@@ -209,7 +209,7 @@ namespace proton {
 
 	std::string api_endpoint = p_xor("https://protonauth.xyz/api/handler.php");
 
-	std::string user_agent = p_xor("Mozilla cAuth");
+	std::string user_agent = p_xor("Mozilla pAuth");
 
 	class api {
 	public:
@@ -232,7 +232,7 @@ namespace proton {
 			auto response = do_request(p_xor("init"), post_data);
 
 			if (response == p_xor("program_doesnt_exist")) {
-				MessageBoxA(0, p_xor("The program key you tried to use doesn't exist"), "cAuth", MB_ICONERROR);
+				MessageBoxA(0, p_xor("The program key you tried to use doesn't exist"), "pAuth", MB_ICONERROR);
 
 				return;
 			}
@@ -242,7 +242,7 @@ namespace proton {
 			auto decoded_response = response_decoder.parse(response);
 
 			if (!decoded_response[p_xor("success")])
-				MessageBoxA(0, std::string(decoded_response[p_xor("message")]).c_str(), "cAuth", MB_ICONERROR);
+				MessageBoxA(0, std::string(decoded_response[p_xor("message")]).c_str(), "pAuth", MB_ICONERROR);
 
 			auto response_data = utils::split(decoded_response[p_xor("response")], '|');
 
@@ -264,7 +264,7 @@ namespace proton {
 			if (hwid == "default") hwid = utils::get_hwid();
 
 			if (!is_initialized) {
-				MessageBoxA(0, p_xor("The program wasn't initialized"), "cAuth", MB_ICONERROR);
+				MessageBoxA(0, p_xor("The program wasn't initialized"), "pAuth", MB_ICONERROR);
 
 				return false;
 			}
@@ -285,7 +285,7 @@ namespace proton {
 
 			if (!logged_in && show_messages)
 			{
-				// MessageBoxA(0, std::string(decoded_response[p_xor("message")]).c_str(), "cAuth", MB_ICONERROR);
+				// MessageBoxA(0, std::string(decoded_response[p_xor("message")]).c_str(), "pAuth", MB_ICONERROR);
 			}
 			else if(logged_in)
 				load_user_data(decoded_response[p_xor("user_data")]);
@@ -299,7 +299,7 @@ namespace proton {
 			if (hwid == "default") hwid = utils::get_hwid();
 
 			if (!is_initialized) {
-				MessageBoxA(0, p_xor("The program wasn't initialized"), "cAuth", MB_ICONERROR);
+				MessageBoxA(0, p_xor("The program wasn't initialized"), "pAuth", MB_ICONERROR);
 
 				return false;
 			}
@@ -319,14 +319,14 @@ namespace proton {
 			auto decoded_response = response_decoder.parse(response);
 
 			if (!decoded_response[p_xor("success")] && show_messages)
-				MessageBoxA(0, std::string(decoded_response[p_xor("message")]).c_str(), "cAuth", MB_ICONERROR);
+				MessageBoxA(0, std::string(decoded_response[p_xor("message")]).c_str(), "pAuth", MB_ICONERROR);
 
 			return decoded_response[p_xor("success")];
 		}
 
 		bool activate(std::string username, std::string token) {
 			if (!is_initialized) {
-				MessageBoxA(0, p_xor("The program wasn't initialized"), "cAuth", MB_ICONERROR);
+				MessageBoxA(0, p_xor("The program wasn't initialized"), "pAuth", MB_ICONERROR);
 
 				return false;
 			}
@@ -343,7 +343,7 @@ namespace proton {
 			auto decoded_response = response_decoder.parse(response);
 
 			if (!decoded_response[p_xor("success")] && show_messages)
-				MessageBoxA(0, std::string(decoded_response[p_xor("message")]).c_str(), "cAuth", MB_ICONERROR);
+				MessageBoxA(0, std::string(decoded_response[p_xor("message")]).c_str(), "pAuth", MB_ICONERROR);
 
 			return decoded_response[p_xor("success")];
 		}
@@ -370,13 +370,13 @@ namespace proton {
 			};
 
 			if(!is_initialized){
-				MessageBoxA(0, p_xor("The program wasn't initialized"), "cAuth", MB_ICONERROR);
+				MessageBoxA(0, p_xor("The program wasn't initialized"), "pAuth", MB_ICONERROR);
 
 				return to_uc_vector(p_xor("not_initialized"));
 			}
 
 			if(!logged_in){
-				MessageBoxA(0, p_xor("You can only grab server sided files after being logged in."), "cAuth", MB_ICONERROR);
+				MessageBoxA(0, p_xor("You can only grab server sided files after being logged in."), "pAuth", MB_ICONERROR);
 
 				return to_uc_vector(p_xor("not_logged_in"));
 			}
@@ -392,7 +392,7 @@ namespace proton {
 			auto decoded_response = response_decoder.parse(response);
 
 			if (!decoded_response[p_xor("success")] && show_messages)
-                MessageBoxA(0, std::string(decoded_response[p_xor("message")]).c_str(), "cAuth", MB_ICONERROR);
+                MessageBoxA(0, std::string(decoded_response[p_xor("message")]).c_str(), "pAuth", MB_ICONERROR);
 			
 			auto file = encryption::hex_decode(decoded_response[p_xor("response")]);
 
@@ -403,13 +403,13 @@ namespace proton {
 			if (hwid == "default") hwid = utils::get_hwid();
 
 			if (!is_initialized) {
-				MessageBoxA(0, p_xor("The program wasn't initialized"), "cAuth", MB_ICONERROR);
+				MessageBoxA(0, p_xor("The program wasn't initialized"), "pAuth", MB_ICONERROR);
 
 				return p_xor("not_initialized");
 			}
 
 			if (!logged_in) {
-				MessageBoxA(0, p_xor("You can only grab server sided variables after being logged in."), "cAuth", MB_ICONERROR);
+				MessageBoxA(0, p_xor("You can only grab server sided variables after being logged in."), "pAuth", MB_ICONERROR);
 
 				return p_xor("not_logged_in");
 			}
@@ -425,7 +425,7 @@ namespace proton {
 			auto decoded_response = response_decoder.parse(response);
 
 			if (!decoded_response[p_xor("success")] && show_messages)
-				MessageBoxA(0, std::string(decoded_response[p_xor("message")]).c_str(), "cAuth", MB_ICONERROR);
+				MessageBoxA(0, std::string(decoded_response[p_xor("message")]).c_str(), "pAuth", MB_ICONERROR);
 
 			return decoded_response[p_xor("response")];
 		}
@@ -434,7 +434,7 @@ namespace proton {
 			if (user_data.username.empty()) user_data.username = "NONE";
 
 			if (!is_initialized) {
-				MessageBoxA(0, p_xor("The program wasn't initialized"), "cAuth", MB_ICONERROR);
+				MessageBoxA(0, p_xor("The program wasn't initialized"), "pAuth", MB_ICONERROR);
 
 				return;
 			}
