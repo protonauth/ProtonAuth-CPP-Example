@@ -1,7 +1,7 @@
 #include <iostream>
 #include "api/proton_auth.hpp"
 
-proton::api auth(p_xor("1.0"), p_xor("9UiYh22JKLXyL36zZI7xaIuiEYxUGEhVjXChFOifJdV"), p_xor("b708f441dfd4fd65fd090ae8b2d35a91"));
+proton::api auth(p_xor("PROGRAM VERSION"), p_xor("PROGRAM KEY"), p_xor("PROGRAM API/ENCRYPTION KEY"));
 
 int option;
 bool version = "1.2";
